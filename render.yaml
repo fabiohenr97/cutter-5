@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: mente-curiosa-tv
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m gunicorn src.main:app"
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+
